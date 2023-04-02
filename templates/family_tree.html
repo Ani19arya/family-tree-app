@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Family Tree App</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<h1>Family Tree App</h1>
+	<form method="post" enctype="multipart/form-data">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name" required>
+		<label for="relationship">Relationship:</label>
+		<input type="text" id="relationship" name="relationship" required>
+		<label for="image">Image:</label>
+		<input type="file" id="image" name="image" accept="image/*" required>
+		<button type="submit">Submit</button>
+	</form>
+	{% if name %}
+		<div class="card">
+			<img src="{{ url_for('static', filename='images/' + name + '.jpg') }}" alt="{{ name }}" style="width:100%">
+			<div class="container">
+				<h2>{{ name }}</h2>
+				<p>{{ relationship }}</p>
+			</div>
+		</div>
+	{% endif %}
+</body>
+</html>
